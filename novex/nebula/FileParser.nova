@@ -1,0 +1,41 @@
+package "novex/nebula"
+
+import "nova/datastruct/list/Stack"
+
+import "novex/astro/tree/StatementIterator"
+import "novex/astro/tree/StatementList"
+import "novex/astro/tree/nodes/NovaFile"
+import "novex/astro/FileParserBase"
+import "novex/astro/SyntaxErrorException"
+
+class FileParser extends Parser<NovaFile> implements FileParserBase {
+    visible var NovaFile file
+
+    visible List<Parser> parsers => [
+        new PackageParser()
+    ]
+
+    [Override]
+    public parse(String source) -> NovaFile => file {
+        let parents = new Stack<Node>()
+
+        let statements = new StatementList(source, parents)
+
+        if (file.name == "Console") {
+            statements.forEach(statement => {
+                parsers.firstWhereOrThrow(new SyntaxErrorException(), {
+                    _.parse(statement)
+                })
+
+                // file.addChild(node)
+            })
+        }
+    }
+
+    [Override]
+    public parse(NovaFile file) -> NovaFile {
+        this.file = file
+
+        return parse(file.source)
+    }
+}
