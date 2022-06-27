@@ -21,7 +21,7 @@ class FileParser extends Parser<NovaFile> implements FileParserBase {
 
         let statements = new StatementList(source, parents)
 
-        if (file.name == "Console") {
+        /*if (file.name == "Console") {
             statements.forEach(statement => {
                 parsers.firstWhereOrThrow(new SyntaxErrorException(), {
                     _.parse(statement)
@@ -29,7 +29,7 @@ class FileParser extends Parser<NovaFile> implements FileParserBase {
 
                 // file.addChild(node)
             })
-        }
+        }*/
     }
 
     [Override]
