@@ -1,6 +1,6 @@
 package "novex/nebula"
 
-import "nova/datastruct/list/Stack"
+import "flatlang/datastruct/list/Stack"
 
 import "novex/astro/tree/StatementIterator"
 import "novex/astro/tree/StatementList"
