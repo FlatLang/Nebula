@@ -1,9 +1,0 @@
-package "novex/nebula"
-
-import "novex/astro/tree/nodes/Package"
-
-class PackageParser extends Parser<Package> {
-    public parse(String statement) -> Package => null {
-        
-    }
-}

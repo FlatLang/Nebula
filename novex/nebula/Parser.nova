@@ -1,9 +1,0 @@
-package "novex/nebula"
-
-import "novex/astro/tree/nodes/Node"
-
-abstract class Parser<TYPE extends Node> {
-    visible List<Parser<TYPE>> childParsers => null
-    
-    public abstract parse(String statement) -> TYPE
-}
